@@ -1,7 +1,25 @@
-This SystemVerilog testbench verifies the functionality of a D Flip-Flop (DFF) using a structured verification approach similar to UVM (Universal Verification Methodology). The testbench consists of multiple components, including a generator, driver, monitor, scoreboard, and environment, to ensure proper functionality.
+# D Flip-Flop (DFF) Verification in SystemVerilog
 
-Key Features
-Structured verification approach: Uses an object-oriented methodology with class-based components.
-Randomized stimulus generation: The generator creates random input patterns for verification.
-Automated checking: The scoreboard compares expected vs. actual output.
-Separation of testbench components: Improves reusability and modularity.
+## **Overview**
+This repository contains a SystemVerilog-based testbench for verifying a **D Flip-Flop (DFF)**. The verification environment follows a structured approach using a class-based methodology similar to **UVM (Universal Verification Methodology)**. It consists of various components like a **generator, driver, monitor, scoreboard, and environment** to validate the functionality of the DFF.
+
+---
+
+
+---
+
+## **D Flip-Flop Design**
+The **D Flip-Flop (DFF)** is a basic sequential circuit that captures the value of the **data input (`din`)** at the **rising edge of the clock (`clk`)**. If the reset (`rst`) is asserted, the output (`dout`) is reset to `0`.
+
+### **DFF Code (`dff.sv`)**
+```systemverilog
+module dff(dff_if vif);
+  always @ (posedge vif.clk)
+    begin
+      if (vif.rst == 1)
+        vif.dout <= 0;
+      else 
+        vif.dout <= vif.din;
+    end
+endmodule
+
